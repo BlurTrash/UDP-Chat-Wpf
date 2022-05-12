@@ -34,18 +34,13 @@ namespace UdpChat
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {
             if (userNameTextBox.Text != "")
-            {
-                //userName = userNameTextBox.Text;
-                
+            {               
                 userNameTextBox.IsReadOnly = true;
                 try
                 {
-                    //client = new UdpClient(localPort);
-
                     uClient = new UserClient(userNameTextBox.Text, localPort);
                     // присоединяемся к групповой рассылке
                     uClient.Client.JoinMulticastGroup(groupAdress, TTL);
-                    //client.JoinMulticastGroup(groupAdress, TTL);
 
                     // запускаем задачу на прием сообщений
                     Task task = new Task(ReceiveMessage);
